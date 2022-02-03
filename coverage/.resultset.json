@@ -1,15 +1,20 @@
 {
   "RSpec": {
     "coverage": {
-      "/csce431/spec/feature/integration_spec.rb": {
+      "/csce431/spec/unit/unit_spec.rb": {
         "lines": [
           null,
           1,
           null,
           1,
           1,
+          2,
+          null,
+          null,
           1,
           1,
+          null,
+          null,
           1,
           1,
           1,
@@ -352,6 +357,7 @@
         "lines": [
           1,
           1,
+          1,
           null,
           null
         ]
@@ -368,31 +374,15 @@
           null
         ]
       },
-      "/csce431/spec/unit/unit_spec.rb": {
-        "lines": [
-          null,
-          1,
-          null,
-          1,
-          1,
-          2,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
       "/csce431/app/models/book.rb": {
         "lines": [
           1,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -400,6 +390,30 @@
         "lines": [
           1,
           1,
+          null
+        ]
+      },
+      "/csce431/spec/feature/integration_spec.rb": {
+        "lines": [
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
           null
         ]
       },
@@ -484,6 +498,6 @@
         ]
       }
     },
-    "timestamp": 1643407279
+    "timestamp": 1643928284
   }
 }
