@@ -1,0 +1,63 @@
+env
+  RUBY_VERSION 3.0.2
+  POSTGRES_USER postgres
+  POSTGRES_PASSWORD password
+  DATABASE_USER postgres
+  DATABASE_PASSWORD password
+
+name Rails tests
+on [push, pull_request]
+jobs
+  rspec-test
+    name RSpec
+    runs-on ubuntu-latest
+    services
+      postgres
+        image postgres12
+        ports
+        - 54325432
+        env
+          POSTGRES_USER ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD ${{ env.POSTGRES_PASSWORD }}
+    steps
+      - uses actionscheckout@v2
+      - uses rubysetup-ruby@v1
+        with
+          ruby-version ${{ env.RUBY_VERSION }}
+      - name Install postgres client
+        run sudo apt-get install libpq-dev
+      - name Install dependencies
+        run 
+          gem install bundler
+          bundler install
+      - name Create database
+        run 
+          bundler exec rails dbcreate RAILS_ENV=test
+          bundler exec rails dbmigrate RAILS_ENV=test
+      - uses boralesactions-yarn@v2.3.0
+        with
+          cmd install
+      - name Run tests
+        run bundler exec rspec .
+      - name Run brakeman
+        run brakeman -o brakeman.txt
+      - name Run rubocop
+        run bundler exec rubocop --out rubocop.txt
+      - name Upload coverage results
+        uses actionsupload-artifact@master
+        if always()
+        with
+          name coverage-report
+          path coverage
+      - name Upload rubocop report
+        uses actionsupload-artifact@master
+        if always()
+        with
+          name rubocop-report.txt
+          path rubocop.txt
+      - name Upload brakeman report
+        uses actionsupload-artifact@master
+        if always()
+        with
+          name brakeman-report.txt
+          path brakeman.txt
