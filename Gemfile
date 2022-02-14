@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'rubocop', '~> 1.25', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -54,7 +55,6 @@ group :test do
   gem 'webdrivers'
   gem 'simplecov', :require => false
   gem 'brakeman'
-  gem 'rubocop', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
